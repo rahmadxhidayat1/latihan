@@ -1,7 +1,13 @@
 @extends('layouts.dashboard')
 @section('content2')
 <a href="/student/create"><button class="btn-info mb-2">Input</button></a>
-<table class="table table-primary table-bordered">
+@if($message = Session::get('notif'))
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>{{$message}}</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  @endif
+<table class="table table-primary table-condensed text-center">
     <thead>
       <tr>
         <th>#</th>
@@ -10,17 +16,21 @@
         <th scope="col">Gender</th>
         <th scope="col">Address</th>
         <th scope="col">Major</th>
+        <th scope="col">Menu</th>
       </tr>
     </thead>
     <tbody>
         @foreach ($data as $item)
-            <tr>
-                <th>{{$loop->iteration}}</th>
-                <td>{{$item->name}}</td>
-                <td>{{$item->date_birth}}</td>
-                <td>{{$item->gender}}</td>
-                <td>{{$item->address}}</td>
-                <td>{{$item->major}}</td>
+            <tr class="text-start">
+                <th class="table-active text-break">{{$loop->iteration}}</th>
+                <td class="table-danger">{{$item->name}}</td>
+                <td class="table-warning">{{$item->date_birth}}</td>
+                <td class="table-danger">{{$item->gender}}</td>
+                <td class="table-warning">{{$item->address}}</td>
+                <td class="table-danger" >{{$item->major}}</td>
+                <td class="table-warning">
+                    <a href="{{ route('student.edit', ['student' =>$item->id]) }}" class="btn btn-primary">Edit</a>
+                </td>
             </tr>
         @endforeach
       <tr>
