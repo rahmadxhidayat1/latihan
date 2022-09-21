@@ -16,7 +16,7 @@ class StudentController extends Controller
     public function index()
     {
         $data = Student::get();
-        return view('pages.list', ['data' => $data]);
+        return view('pages.student.list', ['data' => $data]);
     }
 
     /**
@@ -27,7 +27,7 @@ class StudentController extends Controller
     public function create()
     {
         $student =new Student();
-        return view('pages.form', ['student' => $student]);
+        return view('pages.student.form', ['student' => $student]);
 
     }
 
@@ -64,7 +64,7 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
-        return view('pages.form',['student' =>$student]);
+        return view('pages.student.form',['student' =>$student]);
     }
 
     /**
