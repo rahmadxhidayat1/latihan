@@ -41,7 +41,7 @@ class StudentController extends Controller
     {
         $data =$request->all();
         Student::create($data);
-        return redirect('student')->with('notif', 'berhasil diupdate');;
+        return redirect('student')->with('notif', 'berhasil diinsert');;
 
     }
 
@@ -89,6 +89,7 @@ class StudentController extends Controller
      */
     public function destroy(Student $student)
     {
-        //
+        $student->delete();
+        return redirect()->route('student.index')->with('notif', 'berhasil di delete');
     }
 }

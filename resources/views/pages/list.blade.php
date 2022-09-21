@@ -30,6 +30,11 @@
                 <td class="table-danger" >{{$item->major}}</td>
                 <td class="table-warning">
                     <a href="{{ route('student.edit', ['student' =>$item->id]) }}" class="btn btn-primary">Edit</a>
+                    <form action="{{route('student.destroy', ['student' =>$item->id]) }}" method="POST">
+                        @method('delete')
+                        @csrf
+                        <button type="submit" class="btn btn-warning">delete</button>
+                    </form>
                 </td>
             </tr>
         @endforeach
