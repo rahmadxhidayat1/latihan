@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateStudentsTable extends Migration
+class AddForeignKeyInStudent extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,16 @@ class CreateStudentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('students', function (Blueprint $table) {
+        Schema::table('students', function (Blueprint $table) {
             $table->id();
             $table->string('name', 50);
             $table->date('date_birth', 25);
             $table->enum('gender',['man','woman']);
             $table->text('address');
-            //$table->string('major')->nullable();
+            $table->string('major')->nullable();
             $table->integer('major_id');
             $table->timestamps();//kolo m created_at, updated_at
+
         });
     }
 
@@ -32,6 +33,8 @@ class CreateStudentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('students');
+        Schema::table('students', function (Blueprint $table) {
+            //
+        });
     }
 }

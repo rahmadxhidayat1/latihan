@@ -37,10 +37,10 @@
     </div>
     <div class="mb-3">
         <label for="exampleInputEmail5" class="form-label">Major</label>
-        <select name="major" class="form-control" id="">
-            <option value="informatika" {{$student->major == 'informatika' ? 'selected' : ''}}>informatika</option>
-            <option value="matematika" {{$student->major == 'matematika' ? 'selected' : ''}}>matematika</option>
-            <option value="designer" {{$student->major == 'designer' ? 'selected' : ''}}>designer</option>
+        <select name="major_id" class="form-control" id="">
+            @foreach ($majors as $major )
+                <option value="{{ $major ->id}}">{{$major->name}}</option>
+            @endforeach()
         </select>
         @error('major') <div class="text-muted">{{$message}}</div>
         @enderror

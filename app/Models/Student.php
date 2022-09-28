@@ -8,5 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Student extends Model
 {
     use HasFactory;
-    protected $fillable=['name','date_birth','gender','address','major'];
+    protected $fillable=['name','date_birth','gender','address','major_id'];
+    public function major()
+    {
+        return $this->belongsTo(Major::class, "major_id", "id");
+    }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Major;
 use App\Http\Requests\StoreMajorRequest;
 use App\Http\Requests\UpdateMajorRequest;
+use App\Models\Student;
 
 class MajorController extends Controller
 {
@@ -51,7 +52,9 @@ class MajorController extends Controller
      */
     public function show(Major $major)
     {
-        //
+        //query ambil major yang idnya sesusai yang di url dan ambil seluruh studentnya
+        $major =$major->load(['students']);
+        return view('pages.major.list-student', compact('major'));
     }
 
     /**

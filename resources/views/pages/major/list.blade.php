@@ -29,6 +29,7 @@
                         @csrf
                         <button type="submit" class="btn btn-warning">delete</button>
                     </form>
+                    <a href="{{ route('major.show', ['major' =>$item->id]) }}" class="btn btn-primary">Student</a>
                 </td>
             </tr>
         @endforeach

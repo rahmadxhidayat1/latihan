@@ -27,7 +27,7 @@
                 <td class="table-warning">{{$item->date_birth}}</td>
                 <td class="table-danger">{{$item->gender}}</td>
                 <td class="table-warning">{{$item->address}}</td>
-                <td class="table-danger" >{{$item->major}}</td>
+                <td class="table-danger" >{{$item->major->name}}</td>
                 <td class="table-warning">
                     <a href="{{ route('student.edit', ['student' =>$item->id]) }}" class="btn btn-primary">Edit</a>
                     <form action="{{route('student.destroy', ['student' =>$item->id]) }}" method="POST">
