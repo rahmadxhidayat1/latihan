@@ -2,7 +2,9 @@
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\HomeControllers;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\MajorController;
 use App\Models\Student;
+use App\Models\Major;
 use Illuminate\Support\Facades\Route;
 use PHPUnit\Framework\MockObject\Builder\Stub;
 
@@ -23,6 +25,7 @@ Route::get('/kontak',[HomeControllers::class, 'contact'])->name('contact');
 Route::get('/layanan',[HomeControllers::class, 'service'])->name('service');
 Route::get('/harga',[HomeControllers::class, 'price'])->name('price');
 
+
 // untuk mengeluarkan list data
 // Route::get('/student', [StudentController::class, 'index']);
 // // untuk mengeluarkan form view insert
@@ -38,3 +41,4 @@ Route::get('/harga',[HomeControllers::class, 'price'])->name('price');
 
 //mewakili yang diatas
 route::resource('student', StudentController::class);
+route::resource('major', MajorController::class);
