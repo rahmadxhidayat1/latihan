@@ -17,7 +17,7 @@ class CreateStudentsTable extends Migration
             $table->id();
             $table->string('name', 50);
             $table->date('date_birth', 25);
-            $table->enum('gender',['man','woman']);
+            $table->enum('gender',['female','male']);
             $table->text('address');
             //$table->string('major')->nullable();
             $table->integer('major_id');

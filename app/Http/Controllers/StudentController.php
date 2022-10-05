@@ -90,7 +90,6 @@ class StudentController extends Controller
         $student ->update($data);
         return redirect()->route('student.index')->with('notif', 'berhasil diupdate');
     }
-
     /**
      * Remove the specified resource from storage.
      *

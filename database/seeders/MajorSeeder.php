@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Major;
 use Illuminate\Database\Seeder;
 
 class MajorSeeder extends Seeder
@@ -13,6 +14,12 @@ class MajorSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $majors = ["informatika", "marketing", "CDM","akutansi"];
+        foreach ($majors as $key => $major){
+            Major::create([
+                "name" => $major,
+                "description" => "Ini jurusan $major"
+            ]);
+        }
     }
 }
