@@ -16,7 +16,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $data = Student::with(['major'])->get();
+        $data = Student::with(['major'])->paginate(10);
         return view('pages.student.list',['data' =>$data]);
     }
 

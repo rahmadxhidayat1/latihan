@@ -23,8 +23,8 @@
     <div class="mb-3">
         <label for="exampleInputEmail3" class="form-label">Gender</label>
         <select class="form-control" name="gender" id="">
-            <option value="man" {{$student->gender == 'man' ? 'selected' : ''}}>man</option>
-            <option value="woman" {{$student->gender == 'woman' ? 'selected' : ''}}>woman</option>
+            <option value="male" {{$student->gender == 'male' ? 'selected' : ''}}>male</option>
+            <option value="female" {{$student->gender == 'female' ? 'selected' : ''}}>female</option>
         </select>
         @error('gender') <div class="text-muted">{{$message}}</div>
         @enderror

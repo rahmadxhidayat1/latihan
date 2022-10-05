@@ -22,7 +22,7 @@
     <tbody>
         @foreach ($data as $item)
             <tr class="text-start">
-                <th class="table-active text-break">{{$loop->iteration}}</th>
+                <th scope="row">{{($data->currentPage()-1)* $data->perPage() + $loop->iteration}}</th>
                 <td class="table-danger">{{$item->name}}</td>
                 <td class="table-warning">{{$item->date_birth}}</td>
                 <td class="table-danger">{{$item->gender}}</td>
@@ -43,4 +43,5 @@
       </tr>
     </tbody>
   </table>
+{{ $data->links()}}
 @endsection()
