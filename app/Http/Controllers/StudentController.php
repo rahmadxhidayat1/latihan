@@ -6,6 +6,7 @@ use App\Models\Student;
 use App\Http\Requests\StoreStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
 use App\Models\Major;
+use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
@@ -14,10 +15,34 @@ class StudentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = Student::with(['major'])->paginate(10);
-        return view('pages.student.list',['data' =>$data]);
+        $search =$request->input('search');
+        $majors = Major::get();
+        $filter = $request->input('filter');
+        $data = Student::with(['major']);
+        // if ($search){
+        //     //select * from student where name like '%$seacrh%'
+        //     $data->where('name', 'like', "%$search%")
+        //     ->orWhere('address', 'like', "%$search%")
+        //     ->where('majors_id', '=', "$filter");
+        // }
+        if ($search) {
+            $data->where(function ($query) use ($search) {
+                $query->where('name', 'like', "%$search%")
+                    ->orWhere('address', 'like', "%$search%");
+            });
+        }
+
+        if ($filter) {
+            $data->where(function ($query) use ($filter) {
+                $query->where('major_id', '=', $filter);
+            });
+        }
+        $data =$data->paginate(15);
+        return view('pages.student.list',compact('data'),compact('majors'),[
+            'judul'=> "list Student"
+        ]);
     }
 
     /**
