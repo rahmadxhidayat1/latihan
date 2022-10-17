@@ -14,6 +14,7 @@ class MajorSeeder extends Seeder
      */
     public function run()
     {
+        Major::truncate();
         $majors = ["informatika", "marketing", "CDM","akutansi"];
         foreach ($majors as $key => $major){
             Major::create([

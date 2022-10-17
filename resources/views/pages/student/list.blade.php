@@ -7,7 +7,7 @@
     </div>
 @endif
 <a href="/student/create"><button style="width: 25%" class="btn text-start btn-outline-primary border-2 mb-2">Input</button></a>
-  <form class="row" action="{{route('student.index')}}" method="get">
+  <form class="row" action="{{route('student.index')}}" method="get" enctype="multipart/form-data">
     <div>
         <select name="filter" id="filter" class="form-select" style="width: 25%" name="major" id="">
             @foreach ($majors as $major )
@@ -33,6 +33,7 @@
         <th scope="col">Gender</th>
         <th scope="col">Address</th>
         <th scope="col">Major</th>
+        <th>IMAGE</th>
         <th scope="col">Menu</th>
       </tr>
     </thead>
@@ -45,6 +46,7 @@
                 <td class="table-danger">{{$item->gender}}</td>
                 <td class="table-warning">{{$item->address}}</td>
                 <td class="table-danger" >{{$item->major->name}}</td>
+                <td><img src="/storage/{{ $item->image }}" alt="" width="100px"></td>
                 <td class="table-warning">
                     <a href="{{ route('student.edit', ['student' =>$item->id]) }}" class="btn btn-primary">Edit</a>
                     <form action="{{route('student.destroy', ['student' =>$item->id]) }}" method="POST">

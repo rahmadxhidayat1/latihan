@@ -71,8 +71,12 @@ class StudentController extends Controller
     public function store(StoreStudentRequest $request)
     {
         $data =$request->all();
+        $image = $request->file('image');
+        if ($image){
+            $data['image']= $image->store('image/student', 'public');
+        }
         Student::create($data);
-        return redirect('student')->with('notif', 'berhasil diinsert');;
+        return redirect()->route('student.index')->with('notif', 'berhasil diinsert');;
 
     }
 

@@ -26,7 +26,7 @@ class StoreStudentRequest extends FormRequest
         return [
             'name' => 'required|max:50',
             'date_birth' => 'required|date',
-            'gender' => 'required|in:man,woman',
+            'gender' => 'required|in:female,male',
             'address' => 'required',
         ];
     }

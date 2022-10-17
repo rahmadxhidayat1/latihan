@@ -2,10 +2,10 @@
 @section('content2')
 <h1>{{ $student->id ? 'Edit' : 'Create'}}</h1>
 @if ($student->id)
-    <form action="{{ route('student.update' , ['student' => $student->id])}}" method="POST">
+    <form action="{{ route('student.update' , ['student' => $student->id])}}" method="POST" enctype="multipart/form-data">
     @method('PUT')
 @else
-    <form action="{{ route('student.store')}}" method="POST">
+    <form action="{{ route('student.store')}}" method="POST" enctype="multipart/form-data" >
 @endif
     @csrf
     <div class="mb-3">
@@ -44,6 +44,11 @@
         </select>
         @error('major') <div class="text-muted">{{$message}}</div>
         @enderror
+    </div>
+    <label for="inputPassword5" class="form-label">Password</label>
+    <input type="file" name="image" id="image" class="form-control">
+    <div id="passwordHelpBlock" class="form-text">
+    Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
