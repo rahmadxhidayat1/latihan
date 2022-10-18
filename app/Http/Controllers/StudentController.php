@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Student;
 use App\Http\Requests\StoreStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
+use Illuminate\Support\Facades\File;
 use App\Models\Major;
 use Illuminate\Http\Request;
 
@@ -116,6 +117,18 @@ class StudentController extends Controller
     public function update(UpdateStudentRequest $request, Student $student)
     {
         $data = $request->all();
+        $image = $request->file('image');
+        // CEK APAKAH USER MENGUPLOAD FILE
+        if ($image) {
+            // cek apakah file lama ada didalam folder?
+            $exists = File::exists(storage_path('app/public/').$student->image);
+            if ($exists) {
+                // delete file lama tersebut
+                File::delete(storage_path('app/public/').$student->image);
+            }
+            // upload file baru
+            $data['image'] = $image->store('images/student', 'public');
+        }
         $student ->update($data);
         return redirect()->route('student.index')->with('notif', 'berhasil diupdate');
     }
@@ -127,6 +140,11 @@ class StudentController extends Controller
      */
     public function destroy(Student $student)
     {
+        $exists = File::exists(storage_path('app/public/').$student->image);
+        if ($exists) {
+            // delete file lama tersebut
+            File::delete(storage_path('app/public/').$student->image);
+        }
         $student->delete();
         return redirect()->route('student.index')->with('notif', 'berhasil di delete');
     }
