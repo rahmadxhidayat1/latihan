@@ -32,3 +32,4 @@ class CreateMajorsTable extends Migration
         Schema::dropIfExists('majors');
     }
 }
+    

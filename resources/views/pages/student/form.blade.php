@@ -48,7 +48,6 @@
     <label for="inputPassword5" class="form-label">Password</label>
     <input type="file" name="image" id="image" class="form-control">
     <div id="passwordHelpBlock" class="form-text">
-    Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
