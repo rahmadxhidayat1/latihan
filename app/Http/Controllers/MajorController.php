@@ -41,7 +41,7 @@ class MajorController extends Controller
     {
         $data =$request->all();
         Major::create($data);
-        return redirect('major')->with('notif', 'berhasil diinsert');;
+        return redirect('major')->with('notif', 'berhasil diinsert');
     }
 
     /**
