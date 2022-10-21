@@ -24,7 +24,7 @@ class StoreMajorRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:50|unique:majors,name|alpha',
+            'name' => 'required|max:50|unique:majors',
             'description' => 'required',
         ];
     }
