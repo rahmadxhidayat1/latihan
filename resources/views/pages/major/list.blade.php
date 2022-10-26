@@ -33,9 +33,6 @@
                 </td>
             </tr>
         @endforeach
-      <tr>
-
-      </tr>
     </tbody>
   </table>
 @endsection()
