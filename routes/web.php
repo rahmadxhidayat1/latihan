@@ -3,6 +3,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\HomeControllers;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\MajorController;
+use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\TransactionDetailController;
 use App\Models\Student;
 use App\Models\Major;
 use Illuminate\Support\Facades\Route;
@@ -24,7 +26,7 @@ Route::get('/tentang kami',[HomeControllers::class, 'about'])->name('about');
 Route::get('/kontak',[HomeControllers::class, 'contact'])->name('contact');
 Route::get('/layanan',[HomeControllers::class, 'service'])->name('service');
 Route::get('/harga',[HomeControllers::class, 'price'])->name('price');
-
+Route::get('/transaction', [TransactionController::class, 'store']);
 
 // untuk mengeluarkan list data
 // Route::get('/student', [StudentController::class, 'index']);
@@ -40,5 +42,5 @@ Route::get('/harga',[HomeControllers::class, 'price'])->name('price');
 // Route::delete('/student/{id}', [StudentController::class, 'destroy']);
 
 //mewakili yang diatas
-route::resource('student', StudentController::class);
-route::resource('major', MajorController::class);
+Route::resource('student', StudentController::class);
+Route::resource('major', MajorController::class);

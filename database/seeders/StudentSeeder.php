@@ -16,7 +16,7 @@ class StudentSeeder extends Seeder
      */
     public function run()
     {
-        Student::truncate();
+        // Student::truncate();
         //local factory in indonesia
         $faker = Factory::create('id_ID');
         //panggil semua jurusan
