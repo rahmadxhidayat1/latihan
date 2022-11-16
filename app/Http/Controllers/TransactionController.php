@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateTransactionRequest;
 use App\Models\TransactionDetail;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use Ramsey\Uuid\Uuid;
 
 class TransactionController extends Controller
 {
@@ -43,15 +44,17 @@ class TransactionController extends Controller
         DB::beginTransaction();
         try {
             $transaction= Transaction::create([
+                'id' => Uuid::uuid4()->toString(),
                 'customer' => 'rahmad',
                 'total_amount'=> 100000
             ]);
             $transactionDetails = [];
             foreach ($products as $key => $value){//pengganti fetch array(saat memanggil array tidak usah $key tetapi harus $value)
                 $transactionDetails[]= [
+                    'id' => Uuid::uuid4()->toString(),
                     'transaction_id' =>$transaction->id,
                     'product_id' => $value,
-                    'quantity' => "ini",
+                    'quantity' =>1000,
                     'amount' => 1000,
                     'created_at' => Carbon::now()
                 ];
@@ -63,7 +66,7 @@ class TransactionController extends Controller
             return "ok";
         } catch (\Throwable $th) {
             DB::rollBack();
-            return "ggl";
+            return $th;
         }
     }
 
