@@ -16,7 +16,7 @@ class CreateTransactionsTable extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->uuid('id');
             $table->string('customer', 100);
-            $table->float('total_amount');
+            $table->float('total_amount', 20,2);
             $table->timestamps();
         });
     }
